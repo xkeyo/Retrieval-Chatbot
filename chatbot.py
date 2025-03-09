@@ -30,8 +30,8 @@ responses = {
     "difference_for_do_while": "A for loop checks the condition before each iteration. A do-while loop runs at least once before checking.",
 
     # OTHER CONTROL-FLOW STATEMENTS
-    "while_loop": "A while loop in Java runs as long as its condition is true. Syntax: while(condition){...}",
-    "do_while_loop": "A do-while loop runs the code block at least once before checking the condition. Syntax: do{...} while(condition);",
+    "while_loop": "A while loop in Java loops through a block of code as long as a specified condition is true. Syntax: while(condition){ // code block to be executed}",
+    "do_while_loop": "A do/while loop is a variant of the while loop. This loop will execute the code block once, before checking if the condition is true, then it will repeat the loop as long as the condition is true. Syntax: do{ //code block to be executed} while(condition);",
     "switch_statement": "A switch statement in Java chooses execution paths based on matching a variable to cases. Syntax: `switch(expression) { case x: // code block break; case y: // code block break; default: // code block }`.",
     "break_statement": "A break statement ends the nearest loop or switch immediately.",
     "continue_statement": "A continue statement skips the current iteration of the loop and continues with the next iteration.",
