@@ -32,7 +32,8 @@ def get_response(user_input):
     for pattern, response_key in patterns.items():
         if re.search(pattern, user_input):
             if response_key == "bye":
-                return "exit"
+                return responses["bye"]
+
             return responses[response_key]
     
     return responses["default"]
@@ -45,15 +46,12 @@ def chat():
         user_input = input("You: ")
         response = get_response(user_input)
 
-        if response == "exit":
-            print("Chatbot: Goodbye!")
+        if response == responses["bye"]:
+            print("Chatbot:", response)
             break
-        print("Chatbot:", response)
 
+        print("Chatbot:", response)
+        
 # Main function
 if __name__ == "__main__":
     chat()
-
-    
-
-
