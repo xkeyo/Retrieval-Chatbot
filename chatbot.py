@@ -55,7 +55,7 @@ patterns = {
     r"\b(else if|elseif|else-if)\b": "else_if_statement",
     r"\b(nested if|nested condition)\b": "nested_if",
     r"\b(ternary operator|conditional operator)\b": "ternary_operator",
-    r"\b(logical operator|logical operators |logical and|logical or|logical not)\b": "logical_operators",
+    r"\b(logical operator|logical operators|logical and|logical or|logical not)\b": "logical_operators",
     r"\b(difference between if and else|if vs else)\b": "difference_if_else",
     r"\b(difference between if and else if|if else if)\b": "difference_if_elseif",
     r"\b(difference between if and switch|if vs switch)\b": "difference_if_switch",
