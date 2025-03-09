@@ -1,6 +1,6 @@
 # -------------------------------------------------------------------------------
 # Chatbot Project with NLP Integration
-# Written by: Pratham Patel - 40227835, 
+# Written by: Pratham Patel - 40227835, Jonathan Chen - 40214327
 # For COMP-474 - Winter 2025
 # ---------------------------------------------------------------------------------
 

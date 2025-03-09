@@ -1,5 +1,5 @@
 Chatbot Project with NLP Integration -- Sample Run that covers all features of the Chatbot
-Written by: Pratham Patel - 40227835, 
+Written by: Pratham Patel - 40227835, Jonathan Chen - 40214327, 
 For COMP-474 - Winter 2025
 
 Chatbot: Hello! Type 'bye' to exit.
