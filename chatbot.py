@@ -50,29 +50,29 @@ patterns = {
     r"\b(help|support)\b": "help",
     
     # IF-STATEMENT RELATED
-    r"\b(if statement|if condition|if in java)\b": "if_statement",
-    r"\b(else statement|else in java)\b": "else_statement",
-    r"\b(else if|elseif|else-if)\b": "else_if_statement",
-    r"\b(nested if|nested condition)\b": "nested_if",
+    r"\b(if statement|if|if condition|if in java)\b": "if_statement",
+    r"\b(else statement|else|else in java)\b": "else_statement",
+    r"\b(else if statement|else if|elseif|else-if)\b": "else_if_statement",
+    r"\b(nested if statement|nested if|nested condition)\b": "nested_if",
     r"\b(ternary operator|conditional operator)\b": "ternary_operator",
     r"\b(logical operator|logical operators|logical and|logical or|logical not)\b": "logical_operators",
-    r"\b(difference between if and else|difference between if and else|if vs else)\b": "difference_if_else",
-    r"\b(difference between if and else if|difference between else if and if|if else if)\b": "difference_if_elseif",
-    r"\b(difference between if and switch|difference between if and switchif vs switch)\b": "difference_if_switch",
+    r"\b(difference between if and else|difference between else and if|if vs else|else vs if)\b": "difference_if_else",
+    r"\b(difference between if and else if|difference between else if and if|if vs else if|else if vs if)\b": "difference_if_elseif",
+    r"\b(difference between if and switch|difference between if and switch|if vs switch|switch vs if)\b": "difference_if_switch",
     
     # FOR-LOOP RELATED
     r"\b(for loop|for statement|for in java)\b": "for_loop",
     r"\b(enhanced for loop|for each loop|for-each loop)\b": "enhanced_for_loop",
     r"\b(nested for loop|double for loop)\b": "nested_for_loop",
-    r"\b(difference between for and while|for vs while|while vs for)\b": "difference_for_while",
-    r"\b(difference between for and do while|for vs do while|do while vs for)\b": "difference_for_do_while",
+    r"\b(difference between for and while|difference between while and for|for vs while|while vs for)\b": "difference_for_while",
+    r"\b(difference between for and do while|difference between do while and for|for vs do while|do while vs for)\b": "difference_for_do_while",
     
     # OTHER CONTROL-FLOW
-    r"\b(while loop|while in java)\b": "while_loop",
-    r"\b(do while loop|do-while loop|do while in java)\b": "do_while_loop",
-    r"\b(switch statement|switch in java)\b": "switch_statement",
-    r"\b(break statement|break in java)\b": "break_statement",
-    r"\b(continue statement|continue in java)\b": "continue_statement",
+    r"\b(while|while loop|while in java)\b": "while_loop",
+    r"\b(do while|do while loop|do-while loop|do while in java)\b": "do_while_loop",
+    r"\b(switch statement|switch|switch in java)\b": "switch_statement",
+    r"\b(break statement|break|break in java)\b": "break_statement",
+    r"\b(continue statement|continue|continue in java)\b": "continue_statement",
     r"\b(labeled break|labelled break)\b": "labeled_break",
     r"\b(labeled continue|labelled continue)\b": "labeled_continue",
     r"\b(difference between while and do while|difference between do while and while|while vs do while|do while vs while)\b": "difference_while_do_while",
@@ -81,14 +81,25 @@ patterns = {
 # Defining the get_response function
 def get_response(user_input):
     user_input = user_input.lower()
-    
-    # Check for matching patterns using regex
+    # Create a list to store all matches
+    matches = []
+    # Check for all matching patterns and store them
     for pattern, response_key in patterns.items():
-        if re.search(pattern, user_input):
-            if response_key == "bye":
-                return responses["bye"]
-
-            return responses[response_key]
+        found_matches = re.findall(pattern, user_input)
+        if found_matches:
+            for match in found_matches:
+                if isinstance(match, tuple):  
+                    match = match[0]  
+                matches.append((response_key, match, len(match)))
+    
+    #return the response for the longest matched text
+    if matches:
+        matches.sort(key=lambda x: x[2], reverse=True)
+        best_match = matches[0][0] 
+        
+        if best_match == "bye":
+            return responses["bye"]
+        return responses[best_match]
     
     return responses["default"]
 
