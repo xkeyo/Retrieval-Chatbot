@@ -1,17 +1,24 @@
+# -------------------------------------------------------------------------------
+# Chatbot Project with NLP Integration
+# Written by: Pratham Patel - 40227835, 
+# For COMP-474 - Winter 2025
+# ---------------------------------------------------------------------------------
+
+
 # Importing the necessary libraries
 import spacy
 import re
 
-# Loading the NLP model
+# Loading the NLP model for tokenization
 nlp = spacy.load("en_core_web_sm")
 
-# Defining the chatbot responses
+# Defining the chatbot responses based on user inputs
 responses = {
     "greet": "Hello! How can I help you today?",
     "bye": "Goodbye! Have a great day!",
     "help": "I can answer your questions. Try asking about something more specific!",
 
-    # IF-STATEMENT RELATED
+    # IF-STATEMENT RELATED 
     "if_statement": "An if statement in Java checks a condition and executes the block of code if the condition is true. Syntax: `if (condition) { // block of code to be executed if the condition is true}`.",
     "else_statement": "An else statement in Java runs if the 'if' condition is false. It provides an alternative path. Syntax: `if (condition) { // block of code to be executed if the condition is true } else { // block of code to be executed if the condition is false }`.",
     "else_if_statement": "An else-if statement in Java allows multiple conditions to be checked in sequence. Syntax: `if (condition1) { // block of code to be executed if condition1 is true } else if (condition2) { // block of code to be executed if the condition1 is false and condition2 is true } else { // block of code to be executed if the condition1 is false and condition2 is false }`.",
@@ -42,7 +49,7 @@ responses = {
     "default": "I'm sorry, I didn't understand that. Could you rephrase?"
 }
 
-# Different patterns to match user inputs
+# Different patterns to match user inputs and their corresponding responses
 patterns = {
     # Greetings / Exit / Help
     r"\b(hello|hi|hey)\b": "greet",
@@ -78,14 +85,17 @@ patterns = {
     r"\b(difference between while and do while|difference between do while and while|while vs do while|do while vs while)\b": "difference_while_do_while",
 }
 
-# Defining the get_response function
+# Defining the get_response function 
 def get_response(user_input):
+    # Convert user input to lowercase
     user_input = user_input.lower()
     # Create a list to store all matches
     matches = []
     # Check for all matching patterns and store them
     for pattern, response_key in patterns.items():
+        # Use re.findall to find all matches
         found_matches = re.findall(pattern, user_input)
+        # If there are matches add them to the list
         if found_matches:
             for match in found_matches:
                 if isinstance(match, tuple):  
@@ -94,9 +104,11 @@ def get_response(user_input):
     
     #return the response for the longest matched text
     if matches:
+        # Sort the matches based on the length of the matched text
         matches.sort(key=lambda x: x[2], reverse=True)
         best_match = matches[0][0] 
         
+        # Check if the best match is "bye"
         if best_match == "bye":
             return responses["bye"]
         return responses[best_match]
@@ -107,10 +119,13 @@ def get_response(user_input):
 def chat():
     print("Chatbot: Hello! Type 'bye' to exit.")
 
+    # Start a loop to keep the conversation going
     while True:
+        # Get user input
         user_input = input("You: ")
         response = get_response(user_input)
 
+        # Check if the response is "bye"
         if response == responses["bye"]:
             print("Chatbot:", response)
             break
