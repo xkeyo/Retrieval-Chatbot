@@ -56,16 +56,16 @@ patterns = {
     r"\b(nested if|nested condition)\b": "nested_if",
     r"\b(ternary operator|conditional operator)\b": "ternary_operator",
     r"\b(logical operator|logical operators|logical and|logical or|logical not)\b": "logical_operators",
-    r"\b(difference between if and else|if vs else)\b": "difference_if_else",
-    r"\b(difference between if and else if|if else if)\b": "difference_if_elseif",
-    r"\b(difference between if and switch|if vs switch)\b": "difference_if_switch",
+    r"\b(difference between if and else|difference between if and else|if vs else)\b": "difference_if_else",
+    r"\b(difference between if and else if|difference between else if and if|if else if)\b": "difference_if_elseif",
+    r"\b(difference between if and switch|difference between if and switchif vs switch)\b": "difference_if_switch",
     
     # FOR-LOOP RELATED
     r"\b(for loop|for statement|for in java)\b": "for_loop",
     r"\b(enhanced for loop|for each loop|for-each loop)\b": "enhanced_for_loop",
     r"\b(nested for loop|double for loop)\b": "nested_for_loop",
-    r"\b(difference between for and while|for vs while)\b": "difference_for_while",
-    r"\b(difference between for and do while|for vs do while)\b": "difference_for_do_while",
+    r"\b(difference between for and while|for vs while|while vs for)\b": "difference_for_while",
+    r"\b(difference between for and do while|for vs do while|do while vs for)\b": "difference_for_do_while",
     
     # OTHER CONTROL-FLOW
     r"\b(while loop|while in java)\b": "while_loop",
@@ -75,7 +75,7 @@ patterns = {
     r"\b(continue statement|continue in java)\b": "continue_statement",
     r"\b(labeled break|labelled break)\b": "labeled_break",
     r"\b(labeled continue|labelled continue)\b": "labeled_continue",
-    r"\b(difference between while and do while|while vs do while)\b": "difference_while_do_while",
+    r"\b(difference between while and do while|difference between do while and while|while vs do while|do while vs while)\b": "difference_while_do_while",
 }
 
 # Defining the get_response function
