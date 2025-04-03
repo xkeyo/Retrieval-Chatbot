@@ -89,12 +89,19 @@ patterns = {
 def get_response(user_input):
     # Convert user input to lowercase
     user_input = user_input.lower()
+
+    # Run NLP processing (spaCy)
+    doc = nlp(user_input)
+
+    # Create a list of lemmas (base form of words)
+    lemmatized_input = " ".join([token.lemma_ for token in doc])
+
     # Create a list to store all matches
     matches = []
     # Check for all matching patterns and store them
     for pattern, response_key in patterns.items():
         # Use re.findall to find all matches
-        found_matches = re.findall(pattern, user_input)
+        found_matches = re.findall(pattern, lemmatized_input)
         # If there are matches add them to the list
         if found_matches:
             for match in found_matches:
@@ -107,7 +114,7 @@ def get_response(user_input):
         # Sort the matches based on the length of the matched text
         matches.sort(key=lambda x: x[2], reverse=True)
         best_match = matches[0][0] 
-        
+
         # Check if the best match is "bye"
         if best_match == "bye":
             return responses["bye"]
